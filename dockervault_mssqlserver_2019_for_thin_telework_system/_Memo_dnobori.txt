@@ -23,7 +23,7 @@ https://lts.dn.ipantt.net/d/220724_003_ms_sql_server_2019_express_eula_74574/
 cd ~/ && git clone --recursive https://github.com/IPA-CyberLab/IPA-DN-Dockers1.git
 
 ## ビルド実施
-cd ~/IPA-DN-Dockers1/dockervault_mssqlserver_2019_for_thin_telework_system/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && docker build -t tmpimg01 . && echo Docker Image Build OK.
+cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && cd ~/IPA-DN-Dockers1/dockervault_mssqlserver_2019_for_thin_telework_system/ && docker build -t tmpimg01 . && echo Docker Image Build OK.
 
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - SQL Server 起動
 rm -fr /var/opt/mssql/ && mkdir -p /var/opt/mssql/
