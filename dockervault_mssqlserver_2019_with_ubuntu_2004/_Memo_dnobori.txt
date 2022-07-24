@@ -1,0 +1,77 @@
+﻿# イメージ名
+dockervault_test_mssqlserver_2019_with_ubuntu_2004
+
+# バージョン
+20220723_001
+
+# イメージの目的
+これは、Ubuntu 20.04 環境上の Microsoft SQL Server 2019 Express の安定動作イメージである。
+
+
+# ビルド方法 (dn-docker1 にて)
+
+## 初回のみ Git クローンする
+cd ~/ && git clone --recursive git@github.com:IPA-CyberLab/IPA-DN-Dockers1.git
+
+## ビルド実施
+cd ~/IPA-DN-Dockers1/dockervault_mssqlserver_2019_with_ubuntu_2004/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && docker build -t tmpimg01 . && echo Docker Image Build OK.
+
+
+# 動作テスト
+mkdir -p /var/opt/mssql/
+
+docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ tmpimg01
+
+# イメージ公開
+docker login dockervault-auth.dn.ipantt.net
+
+docker tag tmpimg01 dockervault-auth.dn.ipantt.net/dockervault_test_mssqlserver_2019_with_ubuntu_2004:20220723_001
+
+docker push dockervault-auth.dn.ipantt.net/dockervault_test_mssqlserver_2019_with_ubuntu_2004:20220723_001
+
+
+# dn-docker2 でテスト
+# 初回起動 (SQL Server のパスワードを初期化)
+docker pull dockervault.dn.ipantt.net/dockervault_test_mssqlserver_2019_with_ubuntu_2004:20220723_001
+
+mkdir -p /var/opt/mssql/
+
+docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 dockervault.dn.ipantt.net/dockervault_test_mssqlserver_2019_with_ubuntu_2004:20220723_001 /opt/mssql/bin/sqlservr --pid Express --reset-sa-password --accept-eula
+
+Ctrl + C
+
+# デバッグ起動
+docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_test_mssqlserver_2019_with_ubuntu_2004:20220723_001
+
+# デーモンとして常時起動
+docker run -d --restart always --name daemon_mssqlserver --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_test_mssqlserver_2019_with_ubuntu_2004:20220723_001
+
+docker logs -f daemon_mssqlserver
+
+# bash への入り方 (デバッグ用)
+docker exec -it daemon_mssqlserver bash
+
+# sqlcmd への入り方 (デバッグ用)
+
+
+# 停止
+docker stop daemon_mssqlserver
+
+# 再開
+docker start daemon_mssqlserver
+
+# 動作中のコンテナ削除
+docker stop daemon_mssqlserver
+docker rm daemon_mssqlserver
+
+rm -fr /var/opt/mssql/
+
+
+
+
+
+
+
+sudo apt-get -y update && sudo apt-get -y install docker.io
+
+
