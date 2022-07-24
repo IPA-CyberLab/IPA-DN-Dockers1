@@ -7,6 +7,12 @@ dockervault_mssqlserver_2019_for_thin_telework_system
 # イメージの目的
 これは、Ubuntu 20.04 環境上の Microsoft SQL Server 2019 Express の安定動作イメージである。
 
+# 使用条件
+このイメージは、シン・テレワークシステムのプログラムの一部として配布するものであり、その他の目的で使用することはできない。
+このイメージには、Microsoft SQL Server 2019 Express が含まれる。
+
+Microsoft SQL Server 2019 Express の再配布は、以下の EULA の条件に基づいて実施されている。本イメージを利用する前に、以下の EULA の内容に同意する必要がある。
+https://lts.dn.ipantt.net/d/220724_003_ms_sql_server_2019_express_eula_74574/
 
 
 
