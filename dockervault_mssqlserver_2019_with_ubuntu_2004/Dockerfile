@@ -33,6 +33,9 @@ COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 
 COPY files/sqlserver.conf /etc/supervisor/conf.d/sqlserver.conf
 
+RUN \
+	echo "export PS1='[Docker: \u@\h \w]\$ '" >> /root/.bashrc
+
 EXPOSE 1433
 
 CMD ["/usr/bin/supervisord"]
