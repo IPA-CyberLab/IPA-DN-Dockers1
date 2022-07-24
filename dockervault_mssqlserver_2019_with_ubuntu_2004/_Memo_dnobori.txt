@@ -42,57 +42,50 @@ docker push dockervault-auth.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubu
 
 
 
-# 実行方法 (dn-docker2 でテスト)
+# 利用方法 (dn-docker2 でテスト)
+
+# Docker のインストール
+sudo apt-get -y update && sudo apt-get -y install docker.io
 
 # イメージ取得
 
-# rm -fr /var/opt/mssql/
-mkdir -p /var/opt/mssql/
+# sudo rm -fr /var/opt/mssql/
+sudo mkdir -p /var/opt/mssql/
 
-docker pull dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001
+sudo docker pull dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001
 
 # 初回起動 (EULA に同意して SQL Server 2019 の sa パスワードを初期設定)
-docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001 /opt/mssql/bin/sqlservr --pid Express --reset-sa-password --accept-eula
+sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001 /opt/mssql/bin/sqlservr --pid Express --reset-sa-password --accept-eula
 
 # 無事起動したら Ctrl + C で一度終了
 
 # デーモンとして OS の起動時に常時起動するように登録し、実際に動作を開始
-docker run -d --restart always --name daemon_mssqlserver --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001
+sudo docker run -d --restart always --name daemon_mssqlserver --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001
 
 # デーモンとして動作しているコンテナのログの確認 (必要に応じて)
-docker logs -f daemon_mssqlserver
+sudo docker logs -f daemon_mssqlserver
 
 # デーモンとして動作しているコンテナへの bash への入り方 (デバッグ用)
-docker exec -it daemon_mssqlserver bash
+sudo docker exec -it daemon_mssqlserver bash
 
-# デーモンとして動作しているコンテナへの sqlcmd の入り方 (デバッグ用)
-docker exec -it daemon_mssqlserver bash
+# デーモンとして動作しているコンテナへの SQLCMD の入り方 (デバッグ用)
+sudo docker exec -it daemon_mssqlserver /opt/mssql-tools/bin/sqlcmd -U sa
 
-
-# フォアグラウンドプロセスとしてデバッグ起動
-docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001
-
+# フォアグラウンドプロセスとして SQL Server 2019 をデバッグ起動 (デバッグ用)
+sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_mssqlserver_2019_with_ubuntu_2004:20220724_001
 
 
 # デーモンコンテナの停止
-docker stop daemon_mssqlserver
+sudo docker stop daemon_mssqlserver
 
 # デーモンコンテナの再開
-docker start daemon_mssqlserver
+sudo docker start daemon_mssqlserver
 
 # 動作中のデーモンコンテナの削除
-docker stop daemon_mssqlserver
-docker rm daemon_mssqlserver
+sudo docker stop daemon_mssqlserver
+sudo docker rm daemon_mssqlserver
 
 # 不要になったデータの削除 (注意！)
-rm -frI /var/opt/mssql/
-
-
-
-
-
-
-
-sudo apt-get -y update && sudo apt-get -y install docker.io
+sudo rm -frI /var/opt/mssql/
 
 
