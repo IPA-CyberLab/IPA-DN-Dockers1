@@ -1,12 +1,12 @@
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal main restricted
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-updates main restricted
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal universe
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-updates universe
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal multiverse
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-updates multiverse
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-backports main restricted universe multiverse
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal main restricted
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-updates main restricted
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal universe
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-updates universe
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal multiverse
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-updates multiverse
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-backports main restricted universe multiverse
 
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-security main restricted
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-security universe
-deb http://ossvault02.open.ad.jp/vault/oss/20221130_ubuntu_2004_focal_i386_amd64/ focal-security multiverse
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-security main restricted
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-security universe
+deb http://ossvault.open.ad.jp/vault/oss/22072302_ubuntu_2004_focal_i386_amd64/ focal-security multiverse
 
