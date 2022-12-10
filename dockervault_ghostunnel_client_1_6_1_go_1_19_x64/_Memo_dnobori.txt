@@ -46,7 +46,7 @@ cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - bash 起動
 mkdir -p /etc/ghostunnel_client/
 
-docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_PORT=443 --env GHOSTUNNEL_CLIENT_TARGET_HOST_AND_PORT=10.21.2.132:1443 --env ENV_GHOSTUNNEL_CLIENT_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN tmpimg01 bash
+docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=127.0.0.1:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.187:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN tmpimg01 bash
 
 中で
 
