@@ -48,7 +48,11 @@ mkdir -p /etc/ghostunnel_server/
 
 docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_server/,target=/etc/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1443 tmpimg01 bash
 
-## 無事起動したら Ctrl + C で終了
+中で
+
+/usr/bin/supervisord
+
+## 無事起動したら Ctrl + C で終了 -> exit で終了
 
 
 # イメージ公開

@@ -28,7 +28,7 @@ RUN \
 
 COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 
-COPY files/ghostunnel_server.conf /etc/supervisor/ghostunnel_server.conf
+COPY files/ghostunnel_server.conf /etc/supervisor/conf.d/ghostunnel_server.conf
 
 RUN \
 	echo "export PS1='[Docker: \u@\h \w]\\$ '" >> /root/.bashrc
