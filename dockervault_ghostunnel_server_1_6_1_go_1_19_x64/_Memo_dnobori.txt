@@ -46,11 +46,14 @@ cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - bash 起動
 mkdir -p /etc/ghostunnel_server/
 
-docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_server/,target=/etc/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1443 --env GHOSTUNNEL_SERVER_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN tmpimg01 bash
+docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_server/,target=/etc/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1433 --env GHOSTUNNEL_SERVER_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN tmpimg01 bash
 
 中で
 
 /usr/bin/supervisord
+
+# TLS 1.0 でも接続できるかのテスト
+openssl s_client --connect 127.0.0.1:443 -tls1_2 -cert /etc/ghostunnel_server/ghostunnel_client.cer -key /etc/ghostunnel_server/ghostunnel_client.key
 
 ## 無事起動したら Ctrl + C で終了 -> exit で終了
 
@@ -76,6 +79,9 @@ sudo apt-get -y update && sudo apt-get -y install docker.io
 sudo mkdir -p /etc/ghostunnel_server/
 sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_ca.cer -o /etc/ghostunnel_server/ghostunnel_ca.cer
 sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_server.pfx -o /etc/ghostunnel_server/ghostunnel_server.pfx
+sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_client.pfx -o /etc/ghostunnel_server/ghostunnel_client.pfx
+sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_client.cer -o /etc/ghostunnel_server/ghostunnel_client.cer
+sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_client.key -o /etc/ghostunnel_server/ghostunnel_client.key
 
 # イメージ取得
 
