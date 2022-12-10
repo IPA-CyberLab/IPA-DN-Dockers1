@@ -41,14 +41,12 @@ cd ~/ && git clone --recursive https://github.com/IPA-CyberLab/IPA-DN-Dockers1.g
 ## ビルド実施
 cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && cd ~/IPA-DN-Dockers1/dockervault_ghostunnel_server_1_6_1_go_1_19_x64/ && docker build -t tmpimg01 . && echo Docker Image Build OK.
 
-# ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - SQL Server 起動
-rm -fr /var/opt/mssql/ && mkdir -p /var/opt/mssql/
-docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 tmpimg01 /opt/mssql/bin/sqlservr --pid Express --reset-sa-password --accept-eula
-
 ## 無事起動したら Ctrl + C で終了
 
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - bash 起動
-docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 tmpimg01 bash
+mkdir -p /etc/ghostunnel_server/
+
+docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_server/,target=/etc/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1443 tmpimg01 bash
 
 ## 無事起動したら Ctrl + C で終了
 
