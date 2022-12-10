@@ -12,7 +12,7 @@ RUN \
 	rm -rf /var/lib/apt/lists/*
 
 RUN \
-    wget -O go.tar.gz https://lts.dn.ipantt.net/d/221210_001_18233/go1.19.linux-amd64.tar.gz && \
+    wget -O go.tar.gz https://lts.dn.ipantt.net/d/221002_001_go1_19_28904/go1.19.linux-$(dpkg --print-architecture).tar.gz && \
     tar -C /usr/local -xzf go.tar.gz && \
     rm -f go.tar.gz
 
