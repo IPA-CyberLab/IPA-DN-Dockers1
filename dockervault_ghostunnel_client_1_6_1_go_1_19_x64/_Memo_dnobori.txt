@@ -46,7 +46,7 @@ cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - bash 起動
 mkdir -p /etc/ghostunnel_client/
 
-docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=127.0.0.1:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.187:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN tmpimg01 bash
+docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=0.0.0.0:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.188:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN tmpimg01 bash
 
 中で
 
@@ -82,7 +82,7 @@ sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_
 sudo docker pull dockervault.dn.ipantt.net/dockervault_ghostunnel_client_1_6_1_go_1_19_x64:20221210_001
 
 # デーモンとして OS の起動時に常時起動するように登録し、実際に動作を開始
-sudo docker run -d --restart always --name daemon_ghostunnel_client --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=127.0.0.1:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.187:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_client_1_6_1_go_1_19_x64:20221210_001
+sudo docker run -d --restart always --name daemon_ghostunnel_client --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=0.0.0.0:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.188:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_client_1_6_1_go_1_19_x64:20221210_001
 
 # デーモンとして動作しているコンテナのログの確認 (必要に応じて)
 sudo docker logs -f daemon_ghostunnel_client
@@ -91,7 +91,7 @@ sudo docker logs -f daemon_ghostunnel_client
 sudo docker exec -it daemon_ghostunnel_client bash
 
 # フォアグラウンドプロセスとして ghostunnel をデバッグ起動 (デバッグ用)
-sudo docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=127.0.0.1:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.187:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_client_1_6_1_go_1_19_x64:20221210_001
+sudo docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_client/,target=/etc/ghostunnel_client/ --env GHOSTUNNEL_CLIENT_LISTEN_HOST_AND_PORT=127.0.0.1:1433 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_HOST_AND_PORT=103.41.61.188:443 --env GHOSTUNNEL_CLIENT_TUNNELSERVER_CERT_DNS_NAME=Sample_GhostTunnel_Server_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_client_1_6_1_go_1_19_x64:20221210_001
 
 
 # デーモンコンテナの停止
