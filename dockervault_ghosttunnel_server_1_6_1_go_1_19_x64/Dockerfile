@@ -4,7 +4,7 @@ COPY files/apt-sources.list /etc/apt/sources.list
 
 RUN \
 	apt-get -y update && apt-get -y upgrade && \
-	apt-get -y install wget curl lsb-release software-properties-common locales apt-transport-https debconf-utils gnupg2 supervisor libc++1 gdb libsss-nss-idmap0 libsasl2-modules-gssapi-mit libc-dbg gdbserver libbabeltrace1 libdw1 libc++1-10 libc++abi1-10 libatomic1 libunwind8 libnuma1 gawk unixodbc && \
+	apt-get -y install wget curl lsb-release software-properties-common locales apt-transport-https debconf-utils gnupg2 supervisor gmake && \
 	touch /etc/flag_this_is_cloud && \
 	touch /etc/flag_this_is_docker && \
 	apt-get clean && \
