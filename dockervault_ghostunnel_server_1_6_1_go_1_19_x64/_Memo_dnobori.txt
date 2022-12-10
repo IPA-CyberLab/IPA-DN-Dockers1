@@ -8,7 +8,7 @@ dockervault_ghostunnel_server_1_6_1_go_1_19_x64
 20221210_001
 
 # イメージの目的
-これは、Ubuntu 20.04 環境上の Microsoft SQL Server 2019 Express の安定動作イメージである。
+これは、Ubuntu 20.04 環境上の Ghostunnel 1.6.1 (Server の役割) の安定動作イメージである。
 
 
 # ghostunnel-v1.6.1.tar.gz の生成方法 (参考)
@@ -72,17 +72,17 @@ docker push dockervault-auth.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_g
 sudo apt-get -y update && sudo apt-get -y install docker.io
 
 # 証明書の準備
-# sudo rm -fr /var/opt/ghostunnel_server/
-sudo mkdir -p /var/opt/ghostunnel_server/
-sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_ca.cer -o /var/opt/ghostunnel_server/ghostunnel_ca.cer
-sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_server.pfx -o /var/opt/ghostunnel_server/ghostunnel_server.pfx
+# sudo rm -fr /etc/ghostunnel_server/
+sudo mkdir -p /etc/ghostunnel_server/
+sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_ca.cer -o /etc/ghostunnel_server/ghostunnel_ca.cer
+sudo curl --fail https://lts.dn.ipantt.net/d/221210_003_ghostunnel_sample_certs_25880/ghostunnel_server.pfx -o /etc/ghostunnel_server/ghostunnel_server.pfx
 
 # イメージ取得
 
 sudo docker pull dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 # デーモンとして OS の起動時に常時起動するように登録し、実際に動作を開始
-sudo docker run -d --restart always --name daemon_ghostunnel_server --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/var/opt/ghostunnel_server/,target=/var/opt/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1443 --env ENV_GHOSTUNNEL_SERVER_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
+sudo docker run -d --restart always --name daemon_ghostunnel_server --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/etc/ghostunnel_server/,target=/etc/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1433 --env GHOSTUNNEL_SERVER_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 # デーモンとして動作しているコンテナのログの確認 (必要に応じて)
 sudo docker logs -f daemon_ghostunnel_server
@@ -91,7 +91,7 @@ sudo docker logs -f daemon_ghostunnel_server
 sudo docker exec -it daemon_ghostunnel_server bash
 
 # フォアグラウンドプロセスとして ghostunnel をデバッグ起動 (デバッグ用)
-sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/ghostunnel_server/,target=/var/opt/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1443 --env ENV_GHOSTUNNEL_SERVER_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
+sudo docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_server/,target=/etc/ghostunnel_server/ --env GHOSTUNNEL_SERVER_LISTEN_PORT=443 --env GHOSTUNNEL_SERVER_TARGET_HOST_AND_PORT=10.21.2.132:1433 --env GHOSTUNNEL_SERVER_ALLOW_CLIENT_CN=Sample_GhostTunnel_Client_CN dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 
 # デーモンコンテナの停止
@@ -104,7 +104,5 @@ sudo docker start daemon_ghostunnel_server
 sudo docker stop daemon_ghostunnel_server
 sudo docker rm daemon_ghostunnel_server
 
-# 不要になったデータの削除 (注意！)
-sudo rm -frI /var/opt/ghostunnel_server/
 
 
