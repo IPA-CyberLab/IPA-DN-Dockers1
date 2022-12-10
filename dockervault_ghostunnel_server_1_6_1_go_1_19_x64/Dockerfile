@@ -4,7 +4,7 @@ COPY files/apt-sources.list /etc/apt/sources.list
 
 RUN \
 	apt-get -y update && apt-get -y upgrade && \
-	apt-get -y install wget curl lsb-release software-properties-common locales apt-transport-https debconf-utils gnupg2 supervisor make && \
+	apt-get -y install wget curl lsb-release software-properties-common locales apt-transport-https debconf-utils gnupg2 supervisor build-essential git && \
 	touch /etc/flag_this_is_cloud && \
 	touch /etc/flag_this_is_docker && \
 	apt-get clean && \
@@ -26,7 +26,7 @@ RUN \
 
 COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 
-COPY files/ghosttunnel_server.conf /etc/supervisor/ghosttunnel_server.conf
+COPY files/ghostunnel_server.conf /etc/supervisor/ghostunnel_server.conf
 
 RUN \
 	echo "export PS1='[Docker: \u@\h \w]\\$ '" >> /root/.bashrc

@@ -2,7 +2,7 @@
 
 
 # イメージ名
-dockervault_ghosttunnel_server_1_6_1_go_1_19_x64
+dockervault_ghostunnel_server_1_6_1_go_1_19_x64
 
 # バージョン
 20221210_001
@@ -15,18 +15,18 @@ dockervault_ghosttunnel_server_1_6_1_go_1_19_x64
 # 任意のマシンで (dnt-ub1 等)
 cd ~/
 
-rm -fr ~/ghosttunnel-v1.6.1/
+rm -fr ~/ghostunnel-v1.6.1/
 
-mkdir -p ~/ghosttunnel-v1.6.1/
-cd ~/ghosttunnel-v1.6.1/
+mkdir -p ~/ghostunnel-v1.6.1/
+cd ~/ghostunnel-v1.6.1/
 
 git clone -b v1.6.1 --recursive https://github.com/ghostunnel/ghostunnel.git
 
-rm -fr ~/ghosttunnel-v1.6.1/ghostunnel/.git/
+rm -fr ~/ghostunnel-v1.6.1/ghostunnel/.git/
 
 tar czvf ghostunnel-v1.6.1.tar.gz ghostunnel/
 
-# \\dnt-ub1\root\root\ghosttunnel-v1.6.1\
+# \\dnt-ub1\root\root\ghostunnel-v1.6.1\
 # に
 # ghostunnel-v1.6.1.tar.gz
 # が生成される。
@@ -39,7 +39,7 @@ tar czvf ghostunnel-v1.6.1.tar.gz ghostunnel/
 cd ~/ && git clone --recursive https://github.com/IPA-CyberLab/IPA-DN-Dockers1.git
 
 ## ビルド実施
-cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && cd ~/IPA-DN-Dockers1/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64/ && docker build -t tmpimg01 . && echo Docker Image Build OK.
+cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && cd ~/IPA-DN-Dockers1/dockervault_ghostunnel_server_1_6_1_go_1_19_x64/ && docker build -t tmpimg01 . && echo Docker Image Build OK.
 
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - SQL Server 起動
 rm -fr /var/opt/mssql/ && mkdir -p /var/opt/mssql/
@@ -56,9 +56,9 @@ docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,targ
 # イメージ公開
 docker login dockervault-auth.dn.ipantt.net
 
-docker tag tmpimg01 dockervault-auth.dn.ipantt.net/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64:20221210_001
+docker tag tmpimg01 dockervault-auth.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
-docker push dockervault-auth.dn.ipantt.net/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64:20221210_001
+docker push dockervault-auth.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 
 
@@ -74,15 +74,15 @@ sudo apt-get -y update && sudo apt-get -y install docker.io
 # sudo rm -fr /var/opt/mssql/
 sudo mkdir -p /var/opt/mssql/
 
-sudo docker pull dockervault.dn.ipantt.net/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64:20221210_001
+sudo docker pull dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 # 初回起動 (EULA に同意して SQL Server 2019 の sa パスワードを初期設定)
-sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 dockervault.dn.ipantt.net/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64:20221210_001 /opt/mssql/bin/sqlservr --pid Express --reset-sa-password --accept-eula
+sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ --env MSSQL_SA_PASSWORD=SqlNeko123 dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001 /opt/mssql/bin/sqlservr --pid Express --reset-sa-password --accept-eula
 
 # 無事起動したら Ctrl + C で一度終了
 
 # デーモンとして OS の起動時に常時起動するように登録し、実際に動作を開始
-sudo docker run -d --restart always --name daemon_mssqlserver --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64:20221210_001
+sudo docker run -d --restart always --name daemon_mssqlserver --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 # デーモンとして動作しているコンテナのログの確認 (必要に応じて)
 sudo docker logs -f daemon_mssqlserver
@@ -94,7 +94,7 @@ sudo docker exec -it daemon_mssqlserver bash
 sudo docker exec -it daemon_mssqlserver /opt/mssql-tools/bin/sqlcmd -U sa
 
 # フォアグラウンドプロセスとして SQL Server 2019 をデバッグ起動 (デバッグ用)
-sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_ghosttunnel_server_1_6_1_go_1_19_x64:20221210_001
+sudo docker run -it --rm --network host --mount type=bind,source=/var/opt/mssql/,target=/var/opt/mssql/ dockervault.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_go_1_19_x64:20221210_001
 
 
 # デーモンコンテナの停止
