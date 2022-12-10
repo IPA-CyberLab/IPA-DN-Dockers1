@@ -1,7 +1,6 @@
 FROM dockervault.dn.ipantt.net/dockervault_ubuntu_2004_x64:20220723_001
 
 COPY files/apt-sources.list /etc/apt/sources.list
-COPY files/openssl.cnf /etc/ssl/openssl.cnf
 
 RUN \
     export DEBIAN_FRONTEND=noninteractive && \
@@ -30,6 +29,8 @@ RUN \
 COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 
 COPY files/ghostunnel_server.conf /etc/supervisor/conf.d/ghostunnel_server.conf
+
+COPY files/openssl.cnf /etc/ssl/openssl.cnf
 
 RUN \
 	echo "export PS1='[Docker: \u@\h \w]\\$ '" >> /root/.bashrc
