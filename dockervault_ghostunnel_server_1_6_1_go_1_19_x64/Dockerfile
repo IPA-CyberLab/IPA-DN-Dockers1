@@ -22,6 +22,7 @@ RUN \
     wget -O ghostunnel.tar.gz https://lts.dn.ipantt.net/d/221210_002_01321/ghostunnel-v1.6.1.tar.gz && \
     tar xzf ghostunnel.tar.gz && \
     rm -f ghostunnel.tar.gz && \
+    cd /var/opt/ghostunnel/ && \
     export PATH=$PATH:/usr/local/go/bin && \
     make ghostunnel
 
