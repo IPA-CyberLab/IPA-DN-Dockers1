@@ -3,6 +3,7 @@ FROM dockervault.dn.ipantt.net/dockervault_ubuntu_2004_x64:20220723_001
 COPY files/apt-sources.list /etc/apt/sources.list
 
 RUN \
+    export DEBIAN_FRONTEND=noninteractive && \
 	apt-get -y update && apt-get -y upgrade && \
 	apt-get -y install wget curl lsb-release software-properties-common locales apt-transport-https debconf-utils gnupg2 supervisor build-essential git && \
 	touch /etc/flag_this_is_cloud && \
