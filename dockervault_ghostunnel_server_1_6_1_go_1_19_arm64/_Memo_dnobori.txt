@@ -33,7 +33,7 @@ tar czvf ghostunnel-v1.6.1.tar.gz ghostunnel/
 
 
 
-# ビルド方法 (dn-docker1 にて)
+# ビルド方法 (dn-dockerpi1 にて)
 
 ## 初回のみ Git クローンする
 cd ~/ && git clone --recursive https://github.com/IPA-CyberLab/IPA-DN-Dockers1.git
@@ -66,7 +66,7 @@ docker push dockervault-auth.dn.ipantt.net/dockervault_ghostunnel_server_1_6_1_g
 
 
 
-# 利用方法 (dn-docker2 でテスト可)
+# 利用方法 (dn-dockerpi2 でテスト可)
 
 # Docker のインストール
 sudo apt-get -y update && sudo apt-get -y install docker.io

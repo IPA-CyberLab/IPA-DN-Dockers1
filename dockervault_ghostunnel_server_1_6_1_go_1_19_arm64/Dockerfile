@@ -1,4 +1,4 @@
-FROM dockervault.dn.ipantt.net/dockervault_ubuntu_2004_arm64:20220723_001
+FROM dockervault.dn.ipantt.net/dockervault_ubuntu_2004_arm64:20221210_001
 
 COPY files/apt-sources.list /etc/apt/sources.list
 
