@@ -19,9 +19,8 @@ RUN \
 RUN \
     mkdir -p /var/opt/ && \
     cd /var/opt/ && \
-    wget -O ghostunnel.tar.gz https://lts.dn.ipantt.net/d/221210_002_01321/ghostunnel-v1.6.1.tar.gz && \
-    tar xzf ghostunnel.tar.gz && \
-    rm -f ghostunnel.tar.gz && \
+    git clone -b 221211_v1.6.1_enable_legacy_ssl --recursive https://github.com/dnobori/DN-fork-ghostunnel-221211.git && \
+    mv DN-fork-ghostunnel-221211 ghostunnel && \
     cd /var/opt/ghostunnel/ && \
     export PATH=$PATH:/usr/local/go/bin && \
     make ghostunnel
