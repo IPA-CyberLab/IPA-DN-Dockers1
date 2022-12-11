@@ -53,7 +53,7 @@ docker run -it --rm --network host --mount type=bind,source=/etc/ghostunnel_serv
 /usr/bin/supervisord
 
 # TLS 1.0 でも接続できるかのテスト
-openssl s_client --connect 127.0.0.1:443 -tls1_2 -cert /etc/ghostunnel_server/ghostunnel_client.cer -key /etc/ghostunnel_server/ghostunnel_client.key
+openssl s_client --connect 127.0.0.1:443 -tls1 -cert /etc/ghostunnel_server/ghostunnel_client.cer -key /etc/ghostunnel_server/ghostunnel_client.key -cipher AES128-SHA
 
 ## 無事起動したら Ctrl + C で終了 -> exit で終了
 
