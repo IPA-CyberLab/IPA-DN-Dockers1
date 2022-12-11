@@ -11,27 +11,6 @@ dockervault_ghostunnel_server_1_6_1_go_1_19_x64
 これは、Ubuntu 20.04 環境上の Ghostunnel 1.6.1 (Server の役割) の安定動作イメージである。
 
 
-# ghostunnel-v1.6.1.tar.gz の生成方法 (参考)
-# 任意のマシンで (dnt-ub1 等)
-cd ~/
-
-rm -fr ~/ghostunnel-v1.6.1/
-
-mkdir -p ~/ghostunnel-v1.6.1/
-cd ~/ghostunnel-v1.6.1/
-
-git clone -b v1.6.1 --recursive https://github.com/ghostunnel/ghostunnel.git
-
-rm -fr ~/ghostunnel-v1.6.1/ghostunnel/.git/
-
-tar czvf ghostunnel-v1.6.1.tar.gz ghostunnel/
-
-# \\dnt-ub1\root\root\ghostunnel-v1.6.1\
-# に
-# ghostunnel-v1.6.1.tar.gz
-# が生成される。
-
-
 
 # ビルド方法 (dn-docker1 にて)
 

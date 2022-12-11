@@ -1,7 +1,6 @@
 FROM dockervault.dn.ipantt.net/dockervault_ubuntu_2004_arm64:20221210_001
 
 COPY files/apt-sources.list /etc/apt/sources.list
-COPY files/openssl.cnf /etc/ssl/openssl.cnf
 
 RUN \
     export DEBIAN_FRONTEND=noninteractive && \
@@ -20,9 +19,8 @@ RUN \
 RUN \
     mkdir -p /var/opt/ && \
     cd /var/opt/ && \
-    wget -O ghostunnel.tar.gz https://lts.dn.ipantt.net/d/221210_002_01321/ghostunnel-v1.6.1.tar.gz && \
-    tar xzf ghostunnel.tar.gz && \
-    rm -f ghostunnel.tar.gz && \
+    git clone -b 221211_v1.6.1_enable_legacy_ssl --recursive https://github.com/dnobori/DN-fork-ghostunnel-221211.git && \
+    mv DN-fork-ghostunnel-221211 ghostunnel && \
     cd /var/opt/ghostunnel/ && \
     export PATH=$PATH:/usr/local/go/bin && \
     make ghostunnel
@@ -30,6 +28,8 @@ RUN \
 COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 
 COPY files/ghostunnel_server.conf /etc/supervisor/conf.d/ghostunnel_server.conf
+
+COPY files/openssl.cnf /etc/ssl/openssl.cnf
 
 RUN \
 	echo "export PS1='[Docker: \u@\h \w]\\$ '" >> /root/.bashrc
