@@ -1,0 +1,140 @@
+﻿★☆ 登用のメモ ☆★
+
+
+# イメージ名
+dockervault_dnsdist_1_7_2_patch230117_arm64
+
+# バージョン
+20230117_001
+
+# イメージの目的
+これは、Ubuntu 20.04 環境上の 「dnsdist の登改造版ブランチ IPA-DN-dnsdist-1.7.2-patch220818」 の安定動作イメージである。
+
+
+
+# ビルド方法 (dn-dockerpi1 にて)
+
+## 初回のみ Git クローンする
+cd ~/ && git clone --recursive https://github.com/IPA-CyberLab/IPA-DN-Dockers1.git
+
+## ビルド実施
+cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin master && git submodule update --init --recursive) && cd ~/IPA-DN-Dockers1/dockervault_dnsdist_1_7_2_patch230117_arm64/ && docker build -t tmpimg01 . && echo Docker Image Build OK.
+
+
+
+# ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - bash 起動
+mkdir -p /usr/local/etc/
+
+cat <<\EOF > /usr/local/etc/dnsdist.conf
+controlSocket("127.0.0.1:5199")
+webserver("0.0.0.0:80")
+setWebserverConfig({acl="0.0.0.0/0",password="test",apiKey="test"})
+
+setLocal("0.0.0.0")
+setACL({"0.0.0.0/0"})
+--addAction(AllRule(), SetECSOverrideAction(true))
+--addAction(AllRule(), SetDisableECSAction())
+--setECSOverride(true)
+--setECSSourcePrefixV4(0)
+--setECSSourcePrefixV6(0)
+
+newServer({address="8.8.8.8", maxCheckFailures=5, rise=10, checkInterval=1, disableZeroScope=false, useProxyProtocol=false } )
+
+
+pc = newPacketCache(1000000, {maxTTL=5184000, minTTL=0, temporaryFailureTTL=5, staleTTL=59, dontAge=true, parseECS=false, skipOptions={8}})
+
+setStaleCacheEntriesTTL(5184000)
+setCacheCleaningPercentage(20)
+
+getPool(""):setCache(pc)
+EOF
+
+docker run -it --rm --network host --mount type=bind,source=/usr/local/etc/,target=/usr/local/etc/ tmpimg01 bash
+
+中で
+
+/usr/bin/supervisord
+
+http://dn-docker1/
+ID: test
+PW: test
+
+## 無事起動したら Ctrl + C で終了 -> exit で終了
+
+
+# イメージ公開
+docker login dockervault-auth.dn.ipantt.net
+
+docker tag tmpimg01 dockervault-auth.dn.ipantt.net/dockervault_dnsdist_1_7_2_patch230117_arm64:20230117_001
+
+docker push dockervault-auth.dn.ipantt.net/dockervault_dnsdist_1_7_2_patch230117_arm64:20230117_001
+
+
+
+
+
+# 利用方法 (dn-dockerpi2 でテスト可)
+
+# Docker のインストール
+sudo apt-get -y update && sudo apt-get -y install docker.io
+
+# 設定ファイルの準備
+mkdir -p /usr/local/etc/
+
+cat <<\EOF > /usr/local/etc/dnsdist.conf
+controlSocket("127.0.0.1:5199")
+webserver("0.0.0.0:80")
+setWebserverConfig({acl="0.0.0.0/0",password="test",apiKey="test"})
+
+setLocal("0.0.0.0")
+setACL({"0.0.0.0/0"})
+--addAction(AllRule(), SetECSOverrideAction(true))
+--addAction(AllRule(), SetDisableECSAction())
+--setECSOverride(true)
+--setECSSourcePrefixV4(0)
+--setECSSourcePrefixV6(0)
+
+newServer({address="8.8.8.8", maxCheckFailures=5, rise=10, checkInterval=1, disableZeroScope=false, useProxyProtocol=false } )
+
+
+pc = newPacketCache(1000000, {maxTTL=5184000, minTTL=0, temporaryFailureTTL=5, staleTTL=59, dontAge=true, parseECS=false, skipOptions={8}})
+
+setStaleCacheEntriesTTL(5184000)
+setCacheCleaningPercentage(20)
+
+getPool(""):setCache(pc)
+EOF
+
+
+# イメージ取得
+
+sudo docker pull dockervault.dn.ipantt.net/dockervault_dnsdist_1_7_2_patch230117_arm64:20230117_001
+
+# デーモンとして OS の起動時に常時起動するように登録し、実際に動作を開始
+sudo docker run -d --restart always --name daemon_dnsdist --log-driver=journald --log-opt tag=docker_log/{{.Name}}/{{.ID}} --network host --mount type=bind,source=/usr/local/etc/,target=/usr/local/etc/ dockervault.dn.ipantt.net/dockervault_dnsdist_1_7_2_patch230117_arm64:20230117_001
+
+# デーモンとして動作しているコンテナのログの確認 (必要に応じて)
+sudo docker logs -f daemon_dnsdist
+
+# デーモンとして動作しているコンテナへの bash への入り方 (デバッグ用)
+sudo docker exec -it daemon_dnsdist bash
+
+# デーモンとして動作しているコンテナへの bash への入り方 (デバッグ用 - dnsdist コンソールを開く)
+sudo docker exec -it daemon_dnsdist /usr/local/bin/dnsdist -c 127.0.0.1:5199
+
+# フォアグラウンドプロセスとしてデバッグ起動 (デバッグ用)
+sudo docker run -it --rm --network host --mount type=bind,source=/usr/local/etc/,target=/usr/local/etc/ dockervault.dn.ipantt.net/dockervault_dnsdist_1_7_2_patch230117_arm64:20230117_001
+
+
+# デーモンコンテナの停止
+sudo docker stop daemon_dnsdist
+
+# デーモンコンテナの再開
+sudo docker start daemon_dnsdist
+
+# 動作中のデーモンコンテナの削除
+sudo docker stop daemon_dnsdist
+sudo docker rm daemon_dnsdist
+
+
+
