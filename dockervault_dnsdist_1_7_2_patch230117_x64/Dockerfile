@@ -14,7 +14,7 @@ RUN \
 RUN \
     mkdir -p /var/opt/ && \
     cd /var/opt/ && \
-    git clone --recursive -b IPA-DN-dnsdist-1.7.2-patch220818 https://github.com/IPA-CyberLab/IPA-DN-Fork-PDNS-DnsDist-Patch.git && \
+    git clone --recursive -b IPA-DN-dnsdist-1.7.2-patch230117 https://github.com/IPA-CyberLab/IPA-DN-Fork-PDNS-DnsDist-Patch.git && \
     cd /var/opt/IPA-DN-Fork-PDNS-DnsDist-Patch/pdns/dnsdistdist/ && \
     autoreconf -vi && ./configure && make -j 4 && make install
 
