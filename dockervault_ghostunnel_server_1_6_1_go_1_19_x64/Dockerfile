@@ -1,5 +1,7 @@
 FROM dockervault.dn.ipantt.net/dockervault_ubuntu_2004_x64:20220723_001
 
+ENV GHOSTUNNEL_SERVER_LISTEN_IP=0.0.0.0
+
 COPY files/apt-sources.list /etc/apt/sources.list
 
 RUN \
