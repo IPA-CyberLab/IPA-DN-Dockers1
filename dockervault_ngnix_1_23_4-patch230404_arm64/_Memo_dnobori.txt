@@ -119,114 +119,116 @@ PW: test
 
 ## SSLv3.0  Windows PC cygwin から OpenSSL 0.9.8i 15 Sep 2008
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher RC4-MD5
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher RC4-MD5
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher RC4-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher RC4-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DES-CBC3-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher DES-CBC3-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher AES128-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher AES128-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher AES256-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher AES256-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DHE-RSA-AES128-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher DHE-RSA-AES128-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DHE-RSA-AES256-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher DHE-RSA-AES256-SHA
 
 
 ## TLSv1.0  Windows PC cygwin から OpenSSL 0.9.8i 15 Sep 2008
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher RC4-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher RC4-MD5
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DES-CBC3-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher RC4-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher AES128-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher DES-CBC3-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher AES256-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher AES128-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DHE-RSA-AES128-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher AES256-SHA
 
-c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DHE-RSA-AES256-SHA
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher DHE-RSA-AES128-SHA
+
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1 -cipher DHE-RSA-AES256-SHA
 
 
 ## TLSv1.1  Linux normal2 から CentOS 7.2 OpenSSL 1.0.1e
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1
+openssl s_client -connect 10.21.2.101:443 -tls1_1
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1 -cipher RC4-MD5
+openssl s_client -connect 10.21.2.101:443 -tls1_1 -cipher RC4-MD5
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1 -cipher RC4-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_1 -cipher RC4-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1 -cipher DES-CBC3-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_1 -cipher DES-CBC3-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1 -cipher AES128-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_1 -cipher AES128-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1 -cipher AES256-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_1 -cipher AES256-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_1 -cipher DHE-RSA-AES128-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_1 -cipher DHE-RSA-AES128-SHA
 
 
 ## TLSv1.2  Linux normal2 から CentOS 7.2 OpenSSL 1.0.1e
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2
+openssl s_client -connect 10.21.2.101:443 -tls1_2
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher RC4-MD5
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher RC4-MD5
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher RC4-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher RC4-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher DES-CBC3-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher DES-CBC3-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES128-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES128-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES256-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES256-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES128-SHA
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES128-SHA
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES128-GCM-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES128-GCM-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES128-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES128-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES256-GCM-SHA384
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES256-GCM-SHA384
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES256-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES256-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES128-GCM-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES128-GCM-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES128-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES128-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES256-GCM-SHA384
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES256-GCM-SHA384
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES256-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES256-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES128-GCM-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES128-GCM-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES128-SHA256
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES128-SHA256
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES256-GCM-SHA384
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES256-GCM-SHA384
 
-openssl s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES256-SHA384
+openssl s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES256-SHA384
 
 
 ## TLSv1.2  Windows PC Native  OpenSSL 1.1.1k  25 Mar 2021
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-CHACHA20-POLY1305
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-CHACHA20-POLY1305
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-CHACHA20-POLY1305
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-CHACHA20-POLY1305
 
 
 ## TLSv1.3  Windows PC Native  OpenSSL 1.1.1k  25 Mar 2021
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1_3
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1_3
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1_3 -ciphersuites TLS_AES_128_GCM_SHA256
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1_3 -ciphersuites TLS_AES_128_GCM_SHA256
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1_3 -ciphersuites TLS_AES_256_GCM_SHA384
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1_3 -ciphersuites TLS_AES_256_GCM_SHA384
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.101:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256
 
 
 
@@ -237,116 +239,116 @@ C:\git\dndevtools\DnOssUtilsWin32Bin\openssl.exe s_client -connect 10.21.2.99:44
 
 ## SSLv3.0  Windows PC Native OpenSSL 3.0.8
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DHE-RSA-AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -ssl3 -cipher DHE-RSA-AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
 
 
 ## TLSv1.0  Windows PC Native OpenSSL 3.0.8
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DHE-RSA-AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1 -cipher DHE-RSA-AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
 
 
 ## TLSv1.1  Windows PC Native OpenSSL 3.0.8
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_1 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
-
-
-## TLSv1.2  Windows PC Native OpenSSL 3.0.8
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES128-GCM-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES128-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES256-GCM-SHA384:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher AES256-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES128-GCM-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES128-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES256-GCM-SHA384:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-AES256-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES128-GCM-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES128-SHA256:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES256-GCM-SHA384:@SECLEVEL=0 -provider legacy -provider default
-
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-AES256-SHA384:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_1 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
 
 
 ## TLSv1.2  Windows PC Native OpenSSL 3.0.8
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher DHE-RSA-CHACHA20-POLY1305:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_2 -cipher ECDHE-RSA-CHACHA20-POLY1305:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher RC4-MD5:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher RC4-SHA:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DES-CBC3-SHA:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES256-SHA:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES128-SHA:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES128-GCM-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES128-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES256-GCM-SHA384:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher AES256-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES128-GCM-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES128-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES256-GCM-SHA384:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-AES256-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES128-GCM-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES128-SHA256:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES256-GCM-SHA384:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-AES256-SHA384:@SECLEVEL=0 -provider legacy -provider default
+
+
+## TLSv1.2  Windows PC Native OpenSSL 3.0.8
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher DHE-RSA-CHACHA20-POLY1305:@SECLEVEL=0 -provider legacy -provider default
+
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_2 -cipher ECDHE-RSA-CHACHA20-POLY1305:@SECLEVEL=0 -provider legacy -provider default
 
 
 ## TLSv1.3  Windows PC Native OpenSSL 3.0.8
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_3 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_3 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_3 -ciphersuites TLS_AES_128_GCM_SHA256:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_3 -ciphersuites TLS_AES_128_GCM_SHA256:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_3 -ciphersuites TLS_AES_256_GCM_SHA384:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_3 -ciphersuites TLS_AES_256_GCM_SHA384:@SECLEVEL=0 -provider legacy -provider default
 
-C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.99:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256:@SECLEVEL=0 -provider legacy -provider default
+C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2.101:443 -tls1_3 -ciphersuites TLS_CHACHA20_POLY1305_SHA256:@SECLEVEL=0 -provider legacy -provider default
 
 
 

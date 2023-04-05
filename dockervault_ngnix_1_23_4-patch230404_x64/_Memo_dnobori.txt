@@ -140,6 +140,8 @@ c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -ssl3 -cipher DHE-RSA
 
 c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1
 
+c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher RC4-MD5
+
 c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher RC4-SHA
 
 c:\cygwin\bin\openssl.exe s_client -connect 10.21.2.99:443 -tls1 -cipher DES-CBC3-SHA
