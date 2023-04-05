@@ -23,7 +23,11 @@ cd ~/IPA-DN-Dockers1/ && (cd $(git rev-parse --show-toplevel) && git pull origin
 
 
 # ビルドしたマシンにおける簡易動作テスト (必要な場合のみ) - bash 起動
-mkdir -p /usr/local/etc/
+mkdir -p /etc/docker_nginx/
+curl https://lts.dn.ipantt.net/d/230406_001_47048/230406_nginx_1.23.4_default_config_files.tar.gz -o /etc/docker_nginx/_tmp.tar.gz
+cd /etc/docker_nginx/
+tar xzvf _tmp.tar.gz
+
 
 cat <<\EOF > /usr/local/etc/dnsdist.conf
 controlSocket("127.0.0.1:5199")
