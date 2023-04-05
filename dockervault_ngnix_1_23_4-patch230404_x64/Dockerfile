@@ -6,7 +6,7 @@ RUN \
     export DEBIAN_FRONTEND=noninteractive && \
 	apt-get -y update && apt-get -y upgrade && \
 	apt-get -y install wget curl lsb-release software-properties-common locales apt-transport-https debconf-utils gnupg2 supervisor build-essential git && \
-	apt-get -y install libssl-dev libpcre3 libpcre3-dev zlib1g zlib1g-dev libgd-dev libxml2 libxml2-dev uuid-dev libxslt1-dev && \
+	apt-get -y install libssl-dev libpcre3 libpcre3-dev zlib1g zlib1g-dev libgd-dev libxml2 libxml2-dev uuid-dev libxslt1-dev libgeoip-dev && \
 	touch /etc/flag_this_is_cloud && \
 	touch /etc/flag_this_is_docker && \
 	apt-get clean && \
