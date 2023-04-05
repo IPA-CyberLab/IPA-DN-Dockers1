@@ -28,32 +28,82 @@ curl https://lts.dn.ipantt.net/d/230406_001_47048/230406_nginx_1.23.4_default_co
 cd /etc/docker_nginx/
 tar xzvf _tmp.tar.gz
 
+mkdir -p /etc/docker_nginx/modules-enabled/
+mkdir -p /etc/docker_nginx/sites-enabled/
 
-cat <<\EOF > /usr/local/etc/dnsdist.conf
-controlSocket("127.0.0.1:5199")
-webserver("0.0.0.0:80")
-setWebserverConfig({acl="0.0.0.0/0",password="test",apiKey="test"})
+curl --insecure --pinnedpubkey "sha256//lvnOVgA0u06WySztudkn+urQda/zFBRd65A5wCmcBpQ=" https://static.stable1.dn.ipantt.net/d/211115_002_dummy_certs2_23720/00_DummyCert2.cer -o /etc/docker_nginx/new_cert.crt
 
-setLocal("0.0.0.0")
-setACL({"0.0.0.0/0"})
---addAction(AllRule(), SetECSOverrideAction(true))
---addAction(AllRule(), SetDisableECSAction())
---setECSOverride(true)
---setECSSourcePrefixV4(0)
---setECSSourcePrefixV6(0)
-
-newServer({address="8.8.8.8", maxCheckFailures=5, rise=10, checkInterval=1, disableZeroScope=false, useProxyProtocol=false } )
+curl --insecure --pinnedpubkey "sha256//lvnOVgA0u06WySztudkn+urQda/zFBRd65A5wCmcBpQ=" https://static.stable1.dn.ipantt.net/d/211115_002_dummy_certs2_23720/00_DummyCert2.key -o /etc/docker_nginx/new_cert.key
 
 
-pc = newPacketCache(1000000, {maxTTL=5184000, minTTL=0, temporaryFailureTTL=5, staleTTL=59, dontAge=true, parseECS=false, skipOptions={8}})
+cat <<\EOF > /etc/docker_nginx/nginx.conf
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+worker_rlimit_nofile 200000;
 
-setStaleCacheEntriesTTL(5184000)
-setCacheCleaningPercentage(20)
+events {
+    worker_connections 40000;
+    multi_accept on;
+    use epoll;
+}
 
-getPool(""):setCache(pc)
+http {
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 15;
+    types_hash_max_size 2048;
+    server_tokens off;
+    server_names_hash_bucket_size 128;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers "AES128-SHA:ALL:!EXPORT:!LOW:!aNULL:!eNULL:!SSLv2";
+
+    log_format main '[$time_local] Client=[$remote_addr]:$remote_port Server=[$server_addr]:$server_port Host=$host Proto=$server_protocol Request="$request" Status=$status Size=$body_bytes_sent Time=$request_time Referer="$http_referer" UserAgent="$http_user_agent" Username=$remote_user Ssl=$ssl_protocol Cipher=$ssl_cipher';
+    access_log /var/log/nginx/access.log main;
+    error_log /var/log/nginx/error.log;
+
+    gzip off;
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+    server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+        
+        server_name  _;
+        ssl_certificate /etc/nginx/new_cert.crt;
+        ssl_certificate_key /etc/nginx/new_cert.key;
+        
+        location / {
+            root /etc/nginx/;
+            index q7QA3uahYbZvjXVgR4c5pJJw.html;
+            fancyindex on;
+            fancyindex_name_length 200;
+            fancyindex_exact_size off;
+            fancyindex_localtime on;
+            fancyindex_directories_first on;
+        }
+        location = /stat/ {
+            stub_status;
+        }
+    }
+
+}
+
 EOF
 
-docker run -it --rm --network host --mount type=bind,source=/usr/local/etc/,target=/usr/local/etc/ tmpimg01 bash
+
+
+docker run -it --rm --network host --mount type=bind,source=/etc/docker_nginx/,target=/etc/nginx/ tmpimg01 bash
 
 中で
 
