@@ -18,7 +18,8 @@ RUN \
     git clone --recursive -b IPA-DN-Nginx-1.23.4-patch230404 https://github.com/IPA-CyberLab/IPA-DN-Fork-Nginx-Patch.git && \
     git clone --recursive https://github.com/DN-Forks/ngx-fancyindex.git && \
     cd /var/opt/ngx-fancyindex/ && \
-    git checkout 5930c29d6a97787c101cee63b62f6eaa2945bd96
+    git checkout 5930c29d6a97787c101cee63b62f6eaa2945bd96 && \
+    echo change_me_if_git_source_code_changed_20230412
 
 # http://nginx.org/en/docs/configure.html
 
