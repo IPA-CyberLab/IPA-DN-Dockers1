@@ -15,7 +15,7 @@ RUN \
 RUN \
     mkdir -p /var/opt/ && \
     cd /var/opt/ && \
-    git clone --recursive -b IPA-DN-Nginx-1.23.4-patch240119 https://github.com/IPA-CyberLab/IPA-DN-Fork-Nginx-Patch.git && \
+    git clone --recursive -b IPA-DN-Nginx-1.23.4-patch230404-r240119 https://github.com/IPA-CyberLab/IPA-DN-Fork-Nginx-Patch.git && \
     git clone --recursive https://github.com/DN-Forks/ngx-fancyindex.git && \
     git clone --recursive https://github.com/DN-Forks/nginx-dav-ext-module.git && \
     git clone --recursive https://github.com/DN-Forks/headers-more-nginx-module.git && \
