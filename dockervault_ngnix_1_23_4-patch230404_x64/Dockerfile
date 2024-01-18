@@ -23,7 +23,7 @@ RUN \
     git checkout 5930c29d6a97787c101cee63b62f6eaa2945bd96 && \
     cd /var/opt/headers-more-nginx-module/ && \
     git checkout 06dc0be56e5ec9f7fd814e881b066b5540a85bec && \
-    echo change_me_if_git_source_code_changed_2024011802
+    echo change_me_if_git_source_code_changed_2024011803
 
 # http://nginx.org/en/docs/configure.html
 
