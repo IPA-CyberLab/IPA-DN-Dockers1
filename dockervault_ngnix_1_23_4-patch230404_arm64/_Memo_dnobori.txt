@@ -5,7 +5,7 @@
 dockervault_ngnix_1_23_4-patch230404_arm64
 
 # バージョン
-20230412_001
+20240118_001
 
 # イメージの目的
 これは、Ubuntu 20.04 環境上の 「Nginx の登改造版ブランチ IPA-DN-Nginx-1.23.4-patch230404」 の安定動作イメージである。
@@ -363,9 +363,9 @@ C:\git\dndevtools\DnOssUtilsWin32Bin\openssl-3.0.8.exe s_client -connect 10.21.2
 # イメージ公開
 docker login dockervault-auth.dn.ipantt.net
 
-docker tag tmpimg01 dockervault-auth.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20230412_001
+docker tag tmpimg01 dockervault-auth.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20240118_001
 
-docker push dockervault-auth.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20230412_001
+docker push dockervault-auth.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20240118_001
 
 
 
@@ -458,10 +458,10 @@ EOF
 
 # イメージ取得
 
-sudo docker pull dockervault.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20230412_001
+sudo docker pull dockervault.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20240118_001
 
 # デーモンとして OS の起動時に常時起動するように登録し、実際に動作を開始
-sudo docker run -d --restart always --name daemon_nginx --log-driver=json-file --log-opt max-size=100m --log-opt max-file=10 --log-opt compress=false --network host --mount type=bind,source=/etc/docker_nginx/,target=/etc/nginx/ dockervault.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20230412_001
+sudo docker run -d --restart always --name daemon_nginx --log-driver=json-file --log-opt max-size=100m --log-opt max-file=10 --log-opt compress=false --network host --mount type=bind,source=/etc/docker_nginx/,target=/etc/nginx/ dockervault.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20240118_001
 
 # デーモンとして動作しているコンテナのログの確認 (必要に応じて)
 sudo docker logs -f daemon_nginx
@@ -470,7 +470,7 @@ sudo docker logs -f daemon_nginx
 sudo docker exec -it daemon_nginx bash
 
 # フォアグラウンドプロセスとしてデバッグ起動 (デバッグ用)
-sudo docker run -it --rm --network host --mount type=bind,source=/etc/docker_nginx/,target=/etc/nginx/ dockervault.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20230412_001
+sudo docker run -it --rm --network host --mount type=bind,source=/etc/docker_nginx/,target=/etc/nginx/ dockervault.dn.ipantt.net/dockervault_ngnix_1_23_4-patch230404_arm64:20240118_001
 
 
 # デーモンコンテナの停止
